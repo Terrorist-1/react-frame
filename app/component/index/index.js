@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../public/css/index.css';
+import '../../public/css/index.pcss';
 
 class Index extends React.Component {
     constructor(props) {
@@ -25,10 +25,12 @@ class Index extends React.Component {
         return (
             <div className="cont">
                 <div className="top">
-                    这是头部1
+                    <div>这是头部1</div>
+                    <i className="logo"/>
+
                 </div>
                 <div className="bottom">
-                    这是底部
+                    这是底部2
                 </div>
                 <div>
                     Seconds: {this.state.seconds}

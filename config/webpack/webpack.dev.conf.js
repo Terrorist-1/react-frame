@@ -6,6 +6,7 @@ const baseWebpackConfig = require("./webpack.base.conf");//基础配置
 const webpackFile = require("./webpack.file.conf");//一些路径配置
 
 let config = merge(baseWebpackConfig, {
+    mode: 'development',
     output: {
         path: path.resolve(webpackFile.devDirectory),
         filename: 'js/[name].js',
@@ -13,12 +14,6 @@ let config = merge(baseWebpackConfig, {
         publicPath: ''
     },
     plugins: [
-        /*设置开发环境*/
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify('development'),
-            }
-        }),
         /*设置热更新*/
         new webpack.HotModuleReplacementPlugin(),
     ],
@@ -41,6 +36,10 @@ let config = merge(baseWebpackConfig, {
                 test: /\.(css|pcss)$/,
                 loader: 'style-loader?sourceMap!css-loader?sourceMap!postcss-loader?sourceMap',
                 exclude: /node_modules/
+            },
+            {
+                test: /\.(png|jpg|gif|ttf|eot|woff|woff2|svg|swf)$/,
+                loader: 'file-loader?name=[name].[ext]&outputPath=' + webpackFile.resource + '/'
             },
             {
                 test: /\.(png|jpg|gif|ttf|eot|woff|woff2|svg|swf)$/,
