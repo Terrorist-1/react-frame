@@ -8,7 +8,9 @@
 
 # production
 /build
+/.idea
 
+/.cache-loader
 # misc
 .DS_Store
 .env.local
